@@ -43,7 +43,7 @@ let server = http.createServer(app);
 server.listen(port, () => {
     console.log(`app is running at port: http://localhost:${port}`);
 });
-console.log('success')
+
 setInterval(()=>{
     axios.get(
         'https://api.ipify.org?format=json',
