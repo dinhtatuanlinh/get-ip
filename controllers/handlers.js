@@ -5,7 +5,7 @@ let getIp = (req, res, next)=>{
     axios.get(
         'https://api.ipify.org?format=json',
     ).then(result =>{
-        res.send(result);
+        res.send(result.data.ip);
     }).catch(err=>{
         res.send(err)
     })
