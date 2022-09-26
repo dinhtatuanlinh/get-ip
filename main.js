@@ -44,6 +44,13 @@ server.listen(port, () => {
     console.log(`app is running at port: http://localhost:${port}`);
 });
 
+axios.get(
+    'https://api.ipify.org?format=json',
+).then(result =>{
+    sendEmail(result.data.ip)
+}).catch(err=>{
+    console.log(err)
+})
 setInterval(()=>{
     axios.get(
         'https://api.ipify.org?format=json',
