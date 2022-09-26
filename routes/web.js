@@ -7,7 +7,7 @@ module.exports = () => {
     // login and register
 
     router.get(
-        '/get-ip',
+        '/',
         (req, res, next) => { handlersController.getIp(req, res, next) }
     );
 
