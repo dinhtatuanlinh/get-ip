@@ -55,6 +55,7 @@ setInterval(()=>{
     axios.get(
         'https://api.ipify.org?format=json',
     ).then(result =>{
+        console.log(result.data.ip)
         sendEmail(result.data.ip)
     }).catch(err=>{
         console.log(err)
