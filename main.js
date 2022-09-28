@@ -61,5 +61,5 @@ setInterval(()=>{
         console.log(err)
     })
     
-}, 60000)
+}, 86400000)
 // 86400
