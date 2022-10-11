@@ -1,11 +1,24 @@
 {
+  "name": "get-ip",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dinhtatuanlinh/get-ip.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dinhtatuanlinh/get-ip/issues"
+  },
+  "homepage": "https://github.com/dinhtatuanlinh/get-ip#readme",
   "dependencies": {
-    "axios": "^0.27.2",
-    "body-parser": "^1.20.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.2",
-    "express": "^4.18.1",
-    "express-ejs-layouts": "^2.5.1",
-    "nodemailer": "^6.7.8"
+    "axios": "^1.1.2",
+    "dotenv": "^16.0.3",
+    "nodemailer": "^6.8.0"
   }
 }
