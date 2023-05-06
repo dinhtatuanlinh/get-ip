@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
 const { google } = require('googleapis')
 const { OAuth2Client } = require('google-auth-library');
+require('dotenv').config({path: "./.env"});
 
 
 let sendEmail = async (content) => {
