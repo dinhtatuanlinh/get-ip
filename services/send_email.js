@@ -3,7 +3,8 @@ const { google } = require('googleapis')
 const { OAuth2Client } = require('google-auth-library');
 
 
-let sendEmail = (content) => {
+let sendEmail = async (content) => {
+    console.log(process.env.CLIENT_ID,)
     var oauth2Client = new OAuth2Client(
         process.env.CLIENT_ID,
         process.env.CLIENT_SECRET,
@@ -14,7 +15,7 @@ let sendEmail = (content) => {
         refresh_token: process.env.REFRESH_TOKEN
     });
     
-    var accessToken = oauth2Client.getAccessToken();
+    var accessToken = await oauth2Client.getAccessToken();
     let transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
