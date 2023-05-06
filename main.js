@@ -3,7 +3,7 @@ let http = require('http');
 let cors = require('cors')
 const bodyParser = require("body-parser");
 let axios = require("axios")
-require('dotenv').config({path: "./.env"});
+require('dotenv').config();
 
 
 global.__base = __dirname + '/';
