@@ -4,11 +4,10 @@ const { OAuth2Client } = require('google-auth-library');
 
 
 let sendEmail = async (content) => {
-    console.log(process.env.CLIENT_ID,)
     var oauth2Client = new OAuth2Client(
         process.env.CLIENT_ID,
         process.env.CLIENT_SECRET,
-        "https://developers.google.com/oauthplayground"
+        "google.com"
     );
     
     oauth2Client.setCredentials({
