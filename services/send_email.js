@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 let sendEmail = async (content, myOAuth2Client) => {
     let myAccessTokenObject = await myOAuth2Client.getAccessToken()
     // Access Token sẽ nằm trong property 'token' trong Object mà chúng ta vừa get được ở trên
-    let myAccessToken = myAccessTokenObject?.token
+    let myAccessToken = myAccessTokenObject.token
     let transport = nodemailer.createTransport({
         service: 'gmail',
         auth: {
