@@ -3,6 +3,7 @@ let http = require('http');
 let cors = require('cors')
 const bodyParser = require("body-parser");
 let axios = require("axios")
+const { OAuth2Client } = require('google-auth-library');
 require('dotenv').config();
 
 
@@ -11,6 +12,15 @@ global.__pathConfig = __base + 'config/';
 global.__pathRoutes = __base + 'routes/';
 global.__pathControllers = __base + 'controllers/';
 global.__pathServices = __base + 'services/';
+
+const myOAuth2Client = new OAuth2Client(
+    process.env.CLIENT_ID,
+    process.env.CLIENT_SECRET
+)
+// Set Refresh Token vào OAuth2Client Credentials
+myOAuth2Client.setCredentials({
+    refresh_token: process.env.REFRESH_TOKEN
+})
 
 const initWebRoutes = require(__pathRoutes + "web");
 let sendEmail = require(__pathServices + "send_email")
@@ -24,10 +34,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", initWebRoutes());
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     next(createError(404));
 });
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     res.locals.userInfo = '';
     // set locals, only providing error in development
     res.locals.message = err.message;
@@ -47,20 +57,20 @@ server.listen(port, () => {
 
 axios.get(
     'https://api.ipify.org?format=json',
-).then(result =>{
-    sendEmail(result.data.ip)
-}).catch(err=>{
+).then(result => {
+    sendEmail(result.data.ip, myOAuth2Client)
+}).catch(err => {
     console.log(err)
 })
-setInterval(()=>{
+setInterval(() => {
     axios.get(
         'https://api.ipify.org?format=json',
-    ).then(result =>{
+    ).then(result => {
         console.log(result.data.ip)
-        sendEmail(result.data.ip)
-    }).catch(err=>{
+        sendEmail(result.data.ip, myOAuth2Client)
+    }).catch(err => {
         console.log(err)
     })
-    
+
 }, 43200000)
 
